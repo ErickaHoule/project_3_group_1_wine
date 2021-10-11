@@ -1,0 +1,2123 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Other Visualizations</title>
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-2019.css">
+
+<!-- Bootstrap and Bootswatch CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/united/bootstrap.min.css">
+
+<!-- Javascript -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script>
+
+<!-- Visualization Libs -->
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src='https://cdn.plot.ly/plotly-2.4.2.min.js'></script>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script src="/Web Visualizations/Data/data.js"></script>
+<script src="/Web Visualizations/Data/exapp2.js"></script>
+
+
+<style>
+    html,
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+        font-family: "Raleway", sans-serif
+    }
+</style>
+
+<body class="w3-light-grey">
+    <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
+        <div class="w3-container w3-row">
+            <div class="w3-col s4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVDgmyiQT00rHHaPBefBsjmWwa_EXpTkJENg&usqp=CAU" class="w3-circle w3-margin-right" style="width:250px">
+            </div>
+        </div>
+        <hr>
+        <div class="w3-container">
+            <h5><a href="/Web Visualizations/index.html" class="w3-bar-item w3-button w3-padding w3-2019-biking-red"><i class="fa"></i>   Dashboard</a></h5>
+        </div>
+        <div class="w3-bar-block">
+            <!-- <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-light-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a> -->
+            <a href="/Web Visualizations/OVERVIEW.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-home fa-fw"></i>  Overview</a>
+            <a href="/Web Visualizations/ABOUTUS.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-group"></i>  About Us</a>
+            <a href="/Web Visualizations/bubble_index.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-image"></i>  Top Producing Province's</a>
+            <a href="/Web Visualizations/link_index.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-compass"></i>  Wine Provinces</a>
+            <!-- <a href="/Web Visualizations/FINALREPORT.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-sticky-note"></i>  Final Report</a> -->
+            <a href="/Web Visualizations/WORKCITED.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-sticky-note"></i>  Work Cited</a>
+            <a href="/Web Visualizations/Q&A.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-question-circle"></i>  Q & A</a><br><br>
+        </div>
+    </nav>
+
+
+    <div class="container-fluid w3-light-grey">
+        <div class="row">
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-9 jumbotron w3-light-grey">
+                <h1 class="text-center" style="font-size: 40px; font-weight: bolder;">Top Wineries</h1><br>
+                <p style="font-size: 19px; padding-right: 60pt;"> The bar chart below displays the top 10 wineries for both red and white wine. Simply click on the wine type to display your preference. Although all of the top wines' average ranged from 97 to 100. We noticed red wine had higher averages
+                    than white wine.
+                </p>
+                <p style="font-size: 19px;">The table below is the data subset used throughout the project. It displays the data for both the top 100 red and white wine based on points.</p>
+
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-3">
+                            </div>
+                            <div class="col-md-9">
+                                <div id='bar'>
+                                </div>
+                                <br><br>
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                        </div>
+
+
+                                        <div class="container-fluid" style="background-color: whitesmoke;">
+                                            <div class="row">
+                                                <div class="col-md-9">
+                                                    <table border="1" class="table table-hover">
+                                                        <thead>
+                                                            <tr style="text-align: right;">
+                                                                <th></th>
+                                                                <th>country</th>
+                                                                <th>points</th>
+                                                                <th>price</th>
+                                                                <th>province</th>
+                                                                <th>variety</th>
+                                                                <th>winery</th>
+                                                                <th>type</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <th>0</th>
+                                                                <td>US</td>
+                                                                <td>100</td>
+                                                                <td>65.0</td>
+                                                                <td>Oregon</td>
+                                                                <td>Syrah</td>
+                                                                <td>Cayuse</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>13</th>
+                                                                <td>US</td>
+                                                                <td>100</td>
+                                                                <td>245.0</td>
+                                                                <td>California</td>
+                                                                <td>Cabernet Blend</td>
+                                                                <td>Sloan</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>106</th>
+                                                                <td>Australia</td>
+                                                                <td>100</td>
+                                                                <td>300.0</td>
+                                                                <td>Victoria</td>
+                                                                <td>Muscat</td>
+                                                                <td>Chambers Rosewood Vineyards</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>105</th>
+                                                                <td>France</td>
+                                                                <td>100</td>
+                                                                <td>1400.0</td>
+                                                                <td>Champagne</td>
+                                                                <td>Chardonnay</td>
+                                                                <td>Krug</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>104</th>
+                                                                <td>France</td>
+                                                                <td>100</td>
+                                                                <td>848.0</td>
+                                                                <td>Bordeaux</td>
+                                                                <td>Bordeaux-style White Blend</td>
+                                                                <td>Château Haut-Brion</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>103</th>
+                                                                <td>Australia</td>
+                                                                <td>100</td>
+                                                                <td>300.0</td>
+                                                                <td>Victoria</td>
+                                                                <td>Muscat</td>
+                                                                <td>Chambers Rosewood Vineyards</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>102</th>
+                                                                <td>France</td>
+                                                                <td>100</td>
+                                                                <td>1400.0</td>
+                                                                <td>Champagne</td>
+                                                                <td>Chardonnay</td>
+                                                                <td>Krug</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>101</th>
+                                                                <td>Australia</td>
+                                                                <td>100</td>
+                                                                <td>300.0</td>
+                                                                <td>Victoria</td>
+                                                                <td>Muscat</td>
+                                                                <td>Chambers Rosewood Vineyards</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>1</th>
+                                                                <td>Italy</td>
+                                                                <td>100</td>
+                                                                <td>460.0</td>
+                                                                <td>Tuscany</td>
+                                                                <td>Merlot</td>
+                                                                <td>Tenuta dell'Ornellaia</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>16</th>
+                                                                <td>Italy</td>
+                                                                <td>100</td>
+                                                                <td>210.0</td>
+                                                                <td>Tuscany</td>
+                                                                <td>Prugnolo Gentile</td>
+                                                                <td>Avignonesi</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>15</th>
+                                                                <td>US</td>
+                                                                <td>100</td>
+                                                                <td>200.0</td>
+                                                                <td>California</td>
+                                                                <td>Cabernet Sauvignon</td>
+                                                                <td>Cardinale</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>14</th>
+                                                                <td>Italy</td>
+                                                                <td>100</td>
+                                                                <td>460.0</td>
+                                                                <td>Tuscany</td>
+                                                                <td>Merlot</td>
+                                                                <td>Tenuta dell'Ornellaia</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>100</th>
+                                                                <td>France</td>
+                                                                <td>100</td>
+                                                                <td>1400.0</td>
+                                                                <td>Champagne</td>
+                                                                <td>Chardonnay</td>
+                                                                <td>Krug</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>12</th>
+                                                                <td>Italy</td>
+                                                                <td>100</td>
+                                                                <td>195.0</td>
+                                                                <td>Tuscany</td>
+                                                                <td>Red Blend</td>
+                                                                <td>Giovanni Chiappini</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>8</th>
+                                                                <td>US</td>
+                                                                <td>100</td>
+                                                                <td>245.0</td>
+                                                                <td>California</td>
+                                                                <td>Cabernet Blend</td>
+                                                                <td>Sloan</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>11</th>
+                                                                <td>US</td>
+                                                                <td>100</td>
+                                                                <td>65.0</td>
+                                                                <td>Oregon</td>
+                                                                <td>Syrah</td>
+                                                                <td>Cayuse</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>3</th>
+                                                                <td>US</td>
+                                                                <td>100</td>
+                                                                <td>65.0</td>
+                                                                <td>Oregon</td>
+                                                                <td>Syrah</td>
+                                                                <td>Cayuse</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>4</th>
+                                                                <td>US</td>
+                                                                <td>100</td>
+                                                                <td>100.0</td>
+                                                                <td>California</td>
+                                                                <td>Pinot Noir</td>
+                                                                <td>Williams Selyem</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>5</th>
+                                                                <td>Italy</td>
+                                                                <td>100</td>
+                                                                <td>210.0</td>
+                                                                <td>Tuscany</td>
+                                                                <td>Prugnolo Gentile</td>
+                                                                <td>Avignonesi</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>6</th>
+                                                                <td>US</td>
+                                                                <td>100</td>
+                                                                <td>200.0</td>
+                                                                <td>California</td>
+                                                                <td>Cabernet Sauvignon</td>
+                                                                <td>Cardinale</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>7</th>
+                                                                <td>US</td>
+                                                                <td>100</td>
+                                                                <td>100.0</td>
+                                                                <td>California</td>
+                                                                <td>Pinot Noir</td>
+                                                                <td>Williams Selyem</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>2</th>
+                                                                <td>US</td>
+                                                                <td>100</td>
+                                                                <td>215.0</td>
+                                                                <td>California</td>
+                                                                <td>Cabernet Sauvignon</td>
+                                                                <td>Shafer</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>10</th>
+                                                                <td>Italy</td>
+                                                                <td>100</td>
+                                                                <td>195.0</td>
+                                                                <td>Tuscany</td>
+                                                                <td>Red Blend</td>
+                                                                <td>Giovanni Chiappini</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>9</th>
+                                                                <td>Italy</td>
+                                                                <td>100</td>
+                                                                <td>460.0</td>
+                                                                <td>Tuscany</td>
+                                                                <td>Merlot</td>
+                                                                <td>Tenuta dell'Ornellaia</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>22</th>
+                                                                <td>US</td>
+                                                                <td>99</td>
+                                                                <td>65.0</td>
+                                                                <td>Oregon</td>
+                                                                <td>Syrah</td>
+                                                                <td>Cayuse</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>21</th>
+                                                                <td>Italy</td>
+                                                                <td>99</td>
+                                                                <td>237.0</td>
+                                                                <td>Tuscany</td>
+                                                                <td>Prugnolo Gentile</td>
+                                                                <td>Avignonesi</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>45</th>
+                                                                <td>US</td>
+                                                                <td>99</td>
+                                                                <td>125.0</td>
+                                                                <td>Washington</td>
+                                                                <td>Cabernet Sauvignon</td>
+                                                                <td>Quilceda Creek</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>47</th>
+                                                                <td>Italy</td>
+                                                                <td>99</td>
+                                                                <td>200.0</td>
+                                                                <td>Tuscany</td>
+                                                                <td>Red Blend</td>
+                                                                <td>Tenuta dell'Ornellaia</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>48</th>
+                                                                <td>US</td>
+                                                                <td>99</td>
+                                                                <td>75.0</td>
+                                                                <td>California</td>
+                                                                <td>Pinot Noir</td>
+                                                                <td>Williams Selyem</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>49</th>
+                                                                <td>US</td>
+                                                                <td>99</td>
+                                                                <td>75.0</td>
+                                                                <td>Oregon</td>
+                                                                <td>Syrah</td>
+                                                                <td>Cayuse</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>50</th>
+                                                                <td>US</td>
+                                                                <td>99</td>
+                                                                <td>94.0</td>
+                                                                <td>California</td>
+                                                                <td>Pinot Noir</td>
+                                                                <td>Williams Selyem</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>51</th>
+                                                                <td>US</td>
+                                                                <td>99</td>
+                                                                <td>140.0</td>
+                                                                <td>Washington</td>
+                                                                <td>Syrah</td>
+                                                                <td>Charles Smith</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>52</th>
+                                                                <td>US</td>
+                                                                <td>99</td>
+                                                                <td>150.0</td>
+                                                                <td>California</td>
+                                                                <td>Cabernet Sauvignon</td>
+                                                                <td>David Arthur</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>19</th>
+                                                                <td>US</td>
+                                                                <td>99</td>
+                                                                <td>290.0</td>
+                                                                <td>California</td>
+                                                                <td>Red Blend</td>
+                                                                <td>Colgin</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>20</th>
+                                                                <td>Italy</td>
+                                                                <td>99</td>
+                                                                <td>320.0</td>
+                                                                <td>Tuscany</td>
+                                                                <td>Merlot</td>
+                                                                <td>Le Macchiole</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>43</th>
+                                                                <td>Italy</td>
+                                                                <td>99</td>
+                                                                <td>440.0</td>
+                                                                <td>Piedmont</td>
+                                                                <td>Nebbiolo</td>
+                                                                <td>Gaja</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>18</th>
+                                                                <td>Italy</td>
+                                                                <td>99</td>
+                                                                <td>175.0</td>
+                                                                <td>Piedmont</td>
+                                                                <td>Nebbiolo</td>
+                                                                <td>Mascarello Giuseppe e Figlio</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>17</th>
+                                                                <td>US</td>
+                                                                <td>99</td>
+                                                                <td>140.0</td>
+                                                                <td>Washington</td>
+                                                                <td>Syrah</td>
+                                                                <td>Charles Smith</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>107</th>
+                                                                <td>France</td>
+                                                                <td>99</td>
+                                                                <td>385.0</td>
+                                                                <td>Champagne</td>
+                                                                <td>Champagne Blend</td>
+                                                                <td>Moët &amp; Chandon</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>108</th>
+                                                                <td>France</td>
+                                                                <td>99</td>
+                                                                <td>385.0</td>
+                                                                <td>Champagne</td>
+                                                                <td>Champagne Blend</td>
+                                                                <td>Moët &amp; Chandon</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>109</th>
+                                                                <td>France</td>
+                                                                <td>99</td>
+                                                                <td>385.0</td>
+                                                                <td>Champagne</td>
+                                                                <td>Champagne Blend</td>
+                                                                <td>Moët &amp; Chandon</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>23</th>
+                                                                <td>Italy</td>
+                                                                <td>99</td>
+                                                                <td>200.0</td>
+                                                                <td>Tuscany</td>
+                                                                <td>Sangiovese</td>
+                                                                <td>Il Marroneto</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>44</th>
+                                                                <td>France</td>
+                                                                <td>99</td>
+                                                                <td>450.0</td>
+                                                                <td>Rhône Valley</td>
+                                                                <td>Syrah</td>
+                                                                <td>E. Guigal</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>46</th>
+                                                                <td>US</td>
+                                                                <td>99</td>
+                                                                <td>140.0</td>
+                                                                <td>Washington</td>
+                                                                <td>Syrah</td>
+                                                                <td>Charles Smith</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>42</th>
+                                                                <td>US</td>
+                                                                <td>99</td>
+                                                                <td>65.0</td>
+                                                                <td>Oregon</td>
+                                                                <td>Syrah</td>
+                                                                <td>Cayuse</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>28</th>
+                                                                <td>US</td>
+                                                                <td>99</td>
+                                                                <td>245.0</td>
+                                                                <td>California</td>
+                                                                <td>Cabernet Blend</td>
+                                                                <td>Harlan Estate</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>30</th>
+                                                                <td>Italy</td>
+                                                                <td>99</td>
+                                                                <td>200.0</td>
+                                                                <td>Tuscany</td>
+                                                                <td>Red Blend</td>
+                                                                <td>Tenuta dell'Ornellaia</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>31</th>
+                                                                <td>US</td>
+                                                                <td>99</td>
+                                                                <td>245.0</td>
+                                                                <td>California</td>
+                                                                <td>Cabernet Blend</td>
+                                                                <td>Harlan Estate</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>32</th>
+                                                                <td>France</td>
+                                                                <td>99</td>
+                                                                <td>450.0</td>
+                                                                <td>Rhône Valley</td>
+                                                                <td>Syrah</td>
+                                                                <td>E. Guigal</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>33</th>
+                                                                <td>Italy</td>
+                                                                <td>99</td>
+                                                                <td>200.0</td>
+                                                                <td>Tuscany</td>
+                                                                <td>Red Blend</td>
+                                                                <td>Tenuta dell'Ornellaia</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>34</th>
+                                                                <td>US</td>
+                                                                <td>99</td>
+                                                                <td>65.0</td>
+                                                                <td>Oregon</td>
+                                                                <td>Syrah</td>
+                                                                <td>Cayuse</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>41</th>
+                                                                <td>Italy</td>
+                                                                <td>99</td>
+                                                                <td>235.0</td>
+                                                                <td>Tuscany</td>
+                                                                <td>Red Blend</td>
+                                                                <td>Tenuta San Guido</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>27</th>
+                                                                <td>US</td>
+                                                                <td>99</td>
+                                                                <td>100.0</td>
+                                                                <td>California</td>
+                                                                <td>Cabernet Sauvignon</td>
+                                                                <td>Trefethen</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>26</th>
+                                                                <td>Italy</td>
+                                                                <td>99</td>
+                                                                <td>237.0</td>
+                                                                <td>Tuscany</td>
+                                                                <td>Prugnolo Gentile</td>
+                                                                <td>Avignonesi</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>25</th>
+                                                                <td>Italy</td>
+                                                                <td>99</td>
+                                                                <td>320.0</td>
+                                                                <td>Tuscany</td>
+                                                                <td>Merlot</td>
+                                                                <td>Le Macchiole</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>35</th>
+                                                                <td>France</td>
+                                                                <td>99</td>
+                                                                <td>450.0</td>
+                                                                <td>Rhône Valley</td>
+                                                                <td>Syrah</td>
+                                                                <td>E. Guigal</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>36</th>
+                                                                <td>Italy</td>
+                                                                <td>99</td>
+                                                                <td>440.0</td>
+                                                                <td>Piedmont</td>
+                                                                <td>Nebbiolo</td>
+                                                                <td>Gaja</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>37</th>
+                                                                <td>Italy</td>
+                                                                <td>99</td>
+                                                                <td>250.0</td>
+                                                                <td>Tuscany</td>
+                                                                <td>Merlot</td>
+                                                                <td>Tenuta dell'Ornellaia</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>38</th>
+                                                                <td>Italy</td>
+                                                                <td>99</td>
+                                                                <td>320.0</td>
+                                                                <td>Tuscany</td>
+                                                                <td>Merlot</td>
+                                                                <td>Le Macchiole</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>39</th>
+                                                                <td>France</td>
+                                                                <td>99</td>
+                                                                <td>2300.0</td>
+                                                                <td>Bordeaux</td>
+                                                                <td>Bordeaux-style Red Blend</td>
+                                                                <td>Château Latour</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>40</th>
+                                                                <td>US</td>
+                                                                <td>99</td>
+                                                                <td>75.0</td>
+                                                                <td>California</td>
+                                                                <td>Cabernet Sauvignon</td>
+                                                                <td>Stonestreet</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>24</th>
+                                                                <td>Italy</td>
+                                                                <td>99</td>
+                                                                <td>237.0</td>
+                                                                <td>Tuscany</td>
+                                                                <td>Prugnolo Gentile</td>
+                                                                <td>Avignonesi</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>29</th>
+                                                                <td>Italy</td>
+                                                                <td>99</td>
+                                                                <td>250.0</td>
+                                                                <td>Tuscany</td>
+                                                                <td>Merlot</td>
+                                                                <td>Tenuta dell'Ornellaia</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>110</th>
+                                                                <td>France</td>
+                                                                <td>98</td>
+                                                                <td>757.0</td>
+                                                                <td>Burgundy</td>
+                                                                <td>Chardonnay</td>
+                                                                <td>Bouchard Père &amp; Fils</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>99</th>
+                                                                <td>US</td>
+                                                                <td>98</td>
+                                                                <td>175.0</td>
+                                                                <td>California</td>
+                                                                <td>Bordeaux-style Red Blend</td>
+                                                                <td>Colgin</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>98</th>
+                                                                <td>US</td>
+                                                                <td>98</td>
+                                                                <td>110.0</td>
+                                                                <td>California</td>
+                                                                <td>Cabernet Blend</td>
+                                                                <td>Rubicon Estate</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>97</th>
+                                                                <td>Italy</td>
+                                                                <td>98</td>
+                                                                <td>175.0</td>
+                                                                <td>Tuscany</td>
+                                                                <td>Red Blend</td>
+                                                                <td>Tenuta dell'Ornellaia</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>96</th>
+                                                                <td>Australia</td>
+                                                                <td>98</td>
+                                                                <td>850.0</td>
+                                                                <td>South Australia</td>
+                                                                <td>Shiraz</td>
+                                                                <td>Penfolds</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>95</th>
+                                                                <td>Italy</td>
+                                                                <td>98</td>
+                                                                <td>175.0</td>
+                                                                <td>Tuscany</td>
+                                                                <td>Red Blend</td>
+                                                                <td>Tenuta dell'Ornellaia</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>113</th>
+                                                                <td>France</td>
+                                                                <td>98</td>
+                                                                <td>411.0</td>
+                                                                <td>Burgundy</td>
+                                                                <td>Chardonnay</td>
+                                                                <td>Domaine Leflaive</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>112</th>
+                                                                <td>France</td>
+                                                                <td>98</td>
+                                                                <td>411.0</td>
+                                                                <td>Burgundy</td>
+                                                                <td>Chardonnay</td>
+                                                                <td>Domaine Leflaive</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>128</th>
+                                                                <td>France</td>
+                                                                <td>98</td>
+                                                                <td>800.0</td>
+                                                                <td>Bordeaux</td>
+                                                                <td>Bordeaux-style White Blend</td>
+                                                                <td>Château Haut-Brion</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>114</th>
+                                                                <td>Australia</td>
+                                                                <td>98</td>
+                                                                <td>97.0</td>
+                                                                <td>Victoria</td>
+                                                                <td>Tokay</td>
+                                                                <td>Campbells</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>115</th>
+                                                                <td>France</td>
+                                                                <td>98</td>
+                                                                <td>757.0</td>
+                                                                <td>Burgundy</td>
+                                                                <td>Chardonnay</td>
+                                                                <td>Bouchard Père &amp; Fils</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>132</th>
+                                                                <td>France</td>
+                                                                <td>98</td>
+                                                                <td>800.0</td>
+                                                                <td>Bordeaux</td>
+                                                                <td>Bordeaux-style White Blend</td>
+                                                                <td>Château Haut-Brion</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>131</th>
+                                                                <td>Australia</td>
+                                                                <td>98</td>
+                                                                <td>86.0</td>
+                                                                <td>Victoria</td>
+                                                                <td>Tokay</td>
+                                                                <td>R.L. Buller &amp; Son</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>130</th>
+                                                                <td>France</td>
+                                                                <td>98</td>
+                                                                <td>800.0</td>
+                                                                <td>Bordeaux</td>
+                                                                <td>Bordeaux-style White Blend</td>
+                                                                <td>Château Haut-Brion</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>129</th>
+                                                                <td>France</td>
+                                                                <td>98</td>
+                                                                <td>200.0</td>
+                                                                <td>Bordeaux</td>
+                                                                <td>Bordeaux-style White Blend</td>
+                                                                <td>Château Climens</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>93</th>
+                                                                <td>Italy</td>
+                                                                <td>98</td>
+                                                                <td>135.0</td>
+                                                                <td>Tuscany</td>
+                                                                <td>Merlot</td>
+                                                                <td>Fattoria Petrolo</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>127</th>
+                                                                <td>France</td>
+                                                                <td>98</td>
+                                                                <td>200.0</td>
+                                                                <td>Bordeaux</td>
+                                                                <td>Bordeaux-style White Blend</td>
+                                                                <td>Château Climens</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>126</th>
+                                                                <td>France</td>
+                                                                <td>98</td>
+                                                                <td>170.0</td>
+                                                                <td>Champagne</td>
+                                                                <td>Champagne Blend</td>
+                                                                <td>Henriot</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>125</th>
+                                                                <td>France</td>
+                                                                <td>98</td>
+                                                                <td>410.0</td>
+                                                                <td>Burgundy</td>
+                                                                <td>Chardonnay</td>
+                                                                <td>Domaine Leflaive</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>124</th>
+                                                                <td>France</td>
+                                                                <td>98</td>
+                                                                <td>170.0</td>
+                                                                <td>Champagne</td>
+                                                                <td>Champagne Blend</td>
+                                                                <td>Henriot</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>123</th>
+                                                                <td>France</td>
+                                                                <td>98</td>
+                                                                <td>200.0</td>
+                                                                <td>Bordeaux</td>
+                                                                <td>Bordeaux-style White Blend</td>
+                                                                <td>Château Climens</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>122</th>
+                                                                <td>France</td>
+                                                                <td>98</td>
+                                                                <td>289.0</td>
+                                                                <td>Champagne</td>
+                                                                <td>Champagne Blend</td>
+                                                                <td>Louis Roederer</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>121</th>
+                                                                <td>France</td>
+                                                                <td>98</td>
+                                                                <td>757.0</td>
+                                                                <td>Burgundy</td>
+                                                                <td>Chardonnay</td>
+                                                                <td>Bouchard Père &amp; Fils</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>120</th>
+                                                                <td>France</td>
+                                                                <td>98</td>
+                                                                <td>411.0</td>
+                                                                <td>Burgundy</td>
+                                                                <td>Chardonnay</td>
+                                                                <td>Domaine Leflaive</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>119</th>
+                                                                <td>Australia</td>
+                                                                <td>98</td>
+                                                                <td>97.0</td>
+                                                                <td>Victoria</td>
+                                                                <td>Tokay</td>
+                                                                <td>Campbells</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>118</th>
+                                                                <td>Australia</td>
+                                                                <td>98</td>
+                                                                <td>97.0</td>
+                                                                <td>Victoria</td>
+                                                                <td>Tokay</td>
+                                                                <td>Campbells</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>117</th>
+                                                                <td>France</td>
+                                                                <td>98</td>
+                                                                <td>289.0</td>
+                                                                <td>Champagne</td>
+                                                                <td>Champagne Blend</td>
+                                                                <td>Louis Roederer</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>116</th>
+                                                                <td>France</td>
+                                                                <td>98</td>
+                                                                <td>170.0</td>
+                                                                <td>Champagne</td>
+                                                                <td>Champagne Blend</td>
+                                                                <td>Henriot</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>94</th>
+                                                                <td>Italy</td>
+                                                                <td>98</td>
+                                                                <td>320.0</td>
+                                                                <td>Tuscany</td>
+                                                                <td>Merlot</td>
+                                                                <td>Le Macchiole</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>111</th>
+                                                                <td>France</td>
+                                                                <td>98</td>
+                                                                <td>289.0</td>
+                                                                <td>Champagne</td>
+                                                                <td>Champagne Blend</td>
+                                                                <td>Louis Roederer</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>92</th>
+                                                                <td>US</td>
+                                                                <td>98</td>
+                                                                <td>110.0</td>
+                                                                <td>California</td>
+                                                                <td>Sparkling Blend</td>
+                                                                <td>Schramsberg</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>71</th>
+                                                                <td>Italy</td>
+                                                                <td>98</td>
+                                                                <td>135.0</td>
+                                                                <td>Tuscany</td>
+                                                                <td>Merlot</td>
+                                                                <td>Fattoria Petrolo</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>69</th>
+                                                                <td>Australia</td>
+                                                                <td>98</td>
+                                                                <td>125.0</td>
+                                                                <td>South Australia</td>
+                                                                <td>Shiraz</td>
+                                                                <td>Torbreck</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>68</th>
+                                                                <td>US</td>
+                                                                <td>98</td>
+                                                                <td>300.0</td>
+                                                                <td>California</td>
+                                                                <td>Bordeaux-style Red Blend</td>
+                                                                <td>Verité</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>67</th>
+                                                                <td>Italy</td>
+                                                                <td>98</td>
+                                                                <td>135.0</td>
+                                                                <td>Tuscany</td>
+                                                                <td>Merlot</td>
+                                                                <td>Fattoria Petrolo</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>66</th>
+                                                                <td>US</td>
+                                                                <td>98</td>
+                                                                <td>100.0</td>
+                                                                <td>California</td>
+                                                                <td>Pinot Noir</td>
+                                                                <td>Williams Selyem</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>65</th>
+                                                                <td>Italy</td>
+                                                                <td>98</td>
+                                                                <td>225.0</td>
+                                                                <td>Tuscany</td>
+                                                                <td>Syrah</td>
+                                                                <td>Le Macchiole</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>64</th>
+                                                                <td>Italy</td>
+                                                                <td>98</td>
+                                                                <td>95.0</td>
+                                                                <td>Tuscany</td>
+                                                                <td>Sangiovese</td>
+                                                                <td>Conti Costanti</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>63</th>
+                                                                <td>US</td>
+                                                                <td>98</td>
+                                                                <td>70.0</td>
+                                                                <td>Oregon</td>
+                                                                <td>Cabernet Sauvignon</td>
+                                                                <td>Cayuse</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>62</th>
+                                                                <td>US</td>
+                                                                <td>98</td>
+                                                                <td>100.0</td>
+                                                                <td>California</td>
+                                                                <td>Pinot Noir</td>
+                                                                <td>Goldeneye</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>61</th>
+                                                                <td>US</td>
+                                                                <td>98</td>
+                                                                <td>70.0</td>
+                                                                <td>Oregon</td>
+                                                                <td>Cabernet Sauvignon</td>
+                                                                <td>Cayuse</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>60</th>
+                                                                <td>US</td>
+                                                                <td>98</td>
+                                                                <td>90.0</td>
+                                                                <td>California</td>
+                                                                <td>Bordeaux-style Red Blend</td>
+                                                                <td>BOND</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>58</th>
+                                                                <td>Italy</td>
+                                                                <td>98</td>
+                                                                <td>225.0</td>
+                                                                <td>Tuscany</td>
+                                                                <td>Syrah</td>
+                                                                <td>Le Macchiole</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>57</th>
+                                                                <td>Italy</td>
+                                                                <td>98</td>
+                                                                <td>320.0</td>
+                                                                <td>Tuscany</td>
+                                                                <td>Merlot</td>
+                                                                <td>Le Macchiole</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>56</th>
+                                                                <td>Italy</td>
+                                                                <td>98</td>
+                                                                <td>215.0</td>
+                                                                <td>Tuscany</td>
+                                                                <td>Sangiovese Grosso</td>
+                                                                <td>Casanova di Neri</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>55</th>
+                                                                <td>Italy</td>
+                                                                <td>98</td>
+                                                                <td>225.0</td>
+                                                                <td>Tuscany</td>
+                                                                <td>Syrah</td>
+                                                                <td>Le Macchiole</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>54</th>
+                                                                <td>US</td>
+                                                                <td>98</td>
+                                                                <td>70.0</td>
+                                                                <td>Oregon</td>
+                                                                <td>Cabernet Sauvignon</td>
+                                                                <td>Cayuse</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>53</th>
+                                                                <td>US</td>
+                                                                <td>98</td>
+                                                                <td>75.0</td>
+                                                                <td>California</td>
+                                                                <td>Cabernet Sauvignon</td>
+                                                                <td>Coup de Foudre</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>91</th>
+                                                                <td>US</td>
+                                                                <td>98</td>
+                                                                <td>147.0</td>
+                                                                <td>California</td>
+                                                                <td>Sparkling Blend</td>
+                                                                <td>Iron Horse</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>70</th>
+                                                                <td>France</td>
+                                                                <td>98</td>
+                                                                <td>450.0</td>
+                                                                <td>Rhône Valley</td>
+                                                                <td>Syrah</td>
+                                                                <td>E. Guigal</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>59</th>
+                                                                <td>US</td>
+                                                                <td>98</td>
+                                                                <td>120.0</td>
+                                                                <td>Washington</td>
+                                                                <td>Syrah</td>
+                                                                <td>Charles Smith</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>72</th>
+                                                                <td>US</td>
+                                                                <td>98</td>
+                                                                <td>69.0</td>
+                                                                <td>California</td>
+                                                                <td>Pinot Noir</td>
+                                                                <td>Williams Selyem</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>82</th>
+                                                                <td>Italy</td>
+                                                                <td>98</td>
+                                                                <td>130.0</td>
+                                                                <td>Tuscany</td>
+                                                                <td>Cabernet Franc</td>
+                                                                <td>Le Macchiole</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>73</th>
+                                                                <td>Italy</td>
+                                                                <td>98</td>
+                                                                <td>125.0</td>
+                                                                <td>Tuscany</td>
+                                                                <td>Cabernet Franc</td>
+                                                                <td>Le Macchiole</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>89</th>
+                                                                <td>US</td>
+                                                                <td>98</td>
+                                                                <td>50.0</td>
+                                                                <td>Washington</td>
+                                                                <td>Bordeaux-style Red Blend</td>
+                                                                <td>Pirouette</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>88</th>
+                                                                <td>US</td>
+                                                                <td>98</td>
+                                                                <td>100.0</td>
+                                                                <td>California</td>
+                                                                <td>Pinot Noir</td>
+                                                                <td>Goldeneye</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>87</th>
+                                                                <td>US</td>
+                                                                <td>98</td>
+                                                                <td>94.0</td>
+                                                                <td>California</td>
+                                                                <td>Pinot Noir</td>
+                                                                <td>Williams Selyem</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>85</th>
+                                                                <td>Spain</td>
+                                                                <td>98</td>
+                                                                <td>450.0</td>
+                                                                <td>Northern Spain</td>
+                                                                <td>Tinto Fino</td>
+                                                                <td>Emilio Moro</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>84</th>
+                                                                <td>US</td>
+                                                                <td>98</td>
+                                                                <td>70.0</td>
+                                                                <td>California</td>
+                                                                <td>Cabernet Sauvignon</td>
+                                                                <td>Von Strasser</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>83</th>
+                                                                <td>US</td>
+                                                                <td>98</td>
+                                                                <td>300.0</td>
+                                                                <td>California</td>
+                                                                <td>Cabernet Sauvignon</td>
+                                                                <td>Harlan Estate</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>86</th>
+                                                                <td>Australia</td>
+                                                                <td>98</td>
+                                                                <td>325.0</td>
+                                                                <td>South Australia</td>
+                                                                <td>Syrah</td>
+                                                                <td>Clarendon Hills</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>81</th>
+                                                                <td>Italy</td>
+                                                                <td>98</td>
+                                                                <td>125.0</td>
+                                                                <td>Tuscany</td>
+                                                                <td>Cabernet Franc</td>
+                                                                <td>Le Macchiole</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>77</th>
+                                                                <td>US</td>
+                                                                <td>98</td>
+                                                                <td>70.0</td>
+                                                                <td>California</td>
+                                                                <td>Pinot Noir</td>
+                                                                <td>Flowers</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>74</th>
+                                                                <td>US</td>
+                                                                <td>98</td>
+                                                                <td>85.0</td>
+                                                                <td>Washington</td>
+                                                                <td>Bordeaux-style Red Blend</td>
+                                                                <td>Figgins</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>80</th>
+                                                                <td>Italy</td>
+                                                                <td>98</td>
+                                                                <td>130.0</td>
+                                                                <td>Tuscany</td>
+                                                                <td>Cabernet Franc</td>
+                                                                <td>Le Macchiole</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>75</th>
+                                                                <td>Italy</td>
+                                                                <td>98</td>
+                                                                <td>255.0</td>
+                                                                <td>Piedmont</td>
+                                                                <td>Nebbiolo</td>
+                                                                <td>Gaja</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>76</th>
+                                                                <td>Italy</td>
+                                                                <td>98</td>
+                                                                <td>320.0</td>
+                                                                <td>Tuscany</td>
+                                                                <td>Merlot</td>
+                                                                <td>Le Macchiole</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>90</th>
+                                                                <td>US</td>
+                                                                <td>98</td>
+                                                                <td>350.0</td>
+                                                                <td>California</td>
+                                                                <td>Bordeaux-style Red Blend</td>
+                                                                <td>Harlan Estate</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>78</th>
+                                                                <td>US</td>
+                                                                <td>98</td>
+                                                                <td>90.0</td>
+                                                                <td>California</td>
+                                                                <td>Pinot Noir</td>
+                                                                <td>Williams Selyem</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>79</th>
+                                                                <td>US</td>
+                                                                <td>98</td>
+                                                                <td>110.0</td>
+                                                                <td>California</td>
+                                                                <td>Cabernet Blend</td>
+                                                                <td>Rubicon Estate</td>
+                                                                <td>red wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>173</th>
+                                                                <td>France</td>
+                                                                <td>97</td>
+                                                                <td>260.0</td>
+                                                                <td>Champagne</td>
+                                                                <td>Champagne Blend</td>
+                                                                <td>Bollinger</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>163</th>
+                                                                <td>Australia</td>
+                                                                <td>97</td>
+                                                                <td>85.0</td>
+                                                                <td>Victoria</td>
+                                                                <td>Muscat</td>
+                                                                <td>Campbells</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>165</th>
+                                                                <td>France</td>
+                                                                <td>97</td>
+                                                                <td>430.0</td>
+                                                                <td>Burgundy</td>
+                                                                <td>Chardonnay</td>
+                                                                <td>Domaine Leflaive</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>162</th>
+                                                                <td>US</td>
+                                                                <td>97</td>
+                                                                <td>175.0</td>
+                                                                <td>California</td>
+                                                                <td>Champagne Blend</td>
+                                                                <td>Schramsberg</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>166</th>
+                                                                <td>France</td>
+                                                                <td>97</td>
+                                                                <td>330.0</td>
+                                                                <td>Burgundy</td>
+                                                                <td>Chardonnay</td>
+                                                                <td>Louis Jadot</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>167</th>
+                                                                <td>France</td>
+                                                                <td>97</td>
+                                                                <td>350.0</td>
+                                                                <td>Champagne</td>
+                                                                <td>Chardonnay</td>
+                                                                <td>Salon</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>168</th>
+                                                                <td>US</td>
+                                                                <td>97</td>
+                                                                <td>70.0</td>
+                                                                <td>California</td>
+                                                                <td>Chardonnay</td>
+                                                                <td>Flowers</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>169</th>
+                                                                <td>US</td>
+                                                                <td>97</td>
+                                                                <td>50.0</td>
+                                                                <td>California</td>
+                                                                <td>Chardonnay</td>
+                                                                <td>Williams Selyem</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>170</th>
+                                                                <td>Italy</td>
+                                                                <td>97</td>
+                                                                <td>170.0</td>
+                                                                <td>Tuscany</td>
+                                                                <td>White Blend</td>
+                                                                <td>Avignonesi</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>171</th>
+                                                                <td>France</td>
+                                                                <td>97</td>
+                                                                <td>185.0</td>
+                                                                <td>Champagne</td>
+                                                                <td>Champagne Blend</td>
+                                                                <td>Henriot</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>172</th>
+                                                                <td>France</td>
+                                                                <td>97</td>
+                                                                <td>229.0</td>
+                                                                <td>Champagne</td>
+                                                                <td>Champagne Blend</td>
+                                                                <td>Louis Roederer</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>164</th>
+                                                                <td>Australia</td>
+                                                                <td>97</td>
+                                                                <td>85.0</td>
+                                                                <td>Victoria</td>
+                                                                <td>Tokay</td>
+                                                                <td>Campbells</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>182</th>
+                                                                <td>France</td>
+                                                                <td>97</td>
+                                                                <td>550.0</td>
+                                                                <td>Burgundy</td>
+                                                                <td>Chardonnay</td>
+                                                                <td>Domaine Leflaive</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>174</th>
+                                                                <td>US</td>
+                                                                <td>97</td>
+                                                                <td>70.0</td>
+                                                                <td>California</td>
+                                                                <td>Chardonnay</td>
+                                                                <td>Flowers</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>175</th>
+                                                                <td>Italy</td>
+                                                                <td>97</td>
+                                                                <td>170.0</td>
+                                                                <td>Tuscany</td>
+                                                                <td>White Blend</td>
+                                                                <td>Avignonesi</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>176</th>
+                                                                <td>US</td>
+                                                                <td>97</td>
+                                                                <td>65.0</td>
+                                                                <td>California</td>
+                                                                <td>Chardonnay</td>
+                                                                <td>Ramey</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>177</th>
+                                                                <td>France</td>
+                                                                <td>97</td>
+                                                                <td>350.0</td>
+                                                                <td>Champagne</td>
+                                                                <td>Chardonnay</td>
+                                                                <td>Salon</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>178</th>
+                                                                <td>Italy</td>
+                                                                <td>97</td>
+                                                                <td>170.0</td>
+                                                                <td>Tuscany</td>
+                                                                <td>White Blend</td>
+                                                                <td>Avignonesi</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>179</th>
+                                                                <td>France</td>
+                                                                <td>97</td>
+                                                                <td>275.0</td>
+                                                                <td>Champagne</td>
+                                                                <td>Champagne Blend</td>
+                                                                <td>Pol Roger</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>180</th>
+                                                                <td>France</td>
+                                                                <td>97</td>
+                                                                <td>185.0</td>
+                                                                <td>Champagne</td>
+                                                                <td>Champagne Blend</td>
+                                                                <td>Henriot</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>181</th>
+                                                                <td>France</td>
+                                                                <td>97</td>
+                                                                <td>574.0</td>
+                                                                <td>Burgundy</td>
+                                                                <td>Chardonnay</td>
+                                                                <td>Domaine Leflaive</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>183</th>
+                                                                <td>France</td>
+                                                                <td>97</td>
+                                                                <td>451.0</td>
+                                                                <td>Burgundy</td>
+                                                                <td>Chardonnay</td>
+                                                                <td>Domaine Leflaive</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>184</th>
+                                                                <td>France</td>
+                                                                <td>97</td>
+                                                                <td>229.0</td>
+                                                                <td>Champagne</td>
+                                                                <td>Champagne Blend</td>
+                                                                <td>Louis Roederer</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>185</th>
+                                                                <td>France</td>
+                                                                <td>97</td>
+                                                                <td>260.0</td>
+                                                                <td>Champagne</td>
+                                                                <td>Champagne Blend</td>
+                                                                <td>Bollinger</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>160</th>
+                                                                <td>France</td>
+                                                                <td>97</td>
+                                                                <td>95.0</td>
+                                                                <td>Burgundy</td>
+                                                                <td>Chardonnay</td>
+                                                                <td>William Fèvre</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>161</th>
+                                                                <td>Australia</td>
+                                                                <td>97</td>
+                                                                <td>97.0</td>
+                                                                <td>Victoria</td>
+                                                                <td>Muscat</td>
+                                                                <td>Campbells</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>146</th>
+                                                                <td>Italy</td>
+                                                                <td>97</td>
+                                                                <td>90.0</td>
+                                                                <td>Northeastern Italy</td>
+                                                                <td>Picolit</td>
+                                                                <td>Livio Felluga</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>159</th>
+                                                                <td>Australia</td>
+                                                                <td>97</td>
+                                                                <td>97.0</td>
+                                                                <td>Victoria</td>
+                                                                <td>Muscat</td>
+                                                                <td>Campbells</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>144</th>
+                                                                <td>France</td>
+                                                                <td>97</td>
+                                                                <td>275.0</td>
+                                                                <td>Champagne</td>
+                                                                <td>Champagne Blend</td>
+                                                                <td>Pol Roger</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>133</th>
+                                                                <td>France</td>
+                                                                <td>97</td>
+                                                                <td>275.0</td>
+                                                                <td>Champagne</td>
+                                                                <td>Champagne Blend</td>
+                                                                <td>Pol Roger</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>134</th>
+                                                                <td>France</td>
+                                                                <td>97</td>
+                                                                <td>185.0</td>
+                                                                <td>Champagne</td>
+                                                                <td>Champagne Blend</td>
+                                                                <td>Henriot</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>135</th>
+                                                                <td>France</td>
+                                                                <td>97</td>
+                                                                <td>229.0</td>
+                                                                <td>Champagne</td>
+                                                                <td>Champagne Blend</td>
+                                                                <td>Louis Roederer</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>136</th>
+                                                                <td>Australia</td>
+                                                                <td>97</td>
+                                                                <td>300.0</td>
+                                                                <td>Victoria</td>
+                                                                <td>Muscadel</td>
+                                                                <td>Chambers Rosewood Vineyards</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>137</th>
+                                                                <td>France</td>
+                                                                <td>97</td>
+                                                                <td>249.0</td>
+                                                                <td>Champagne</td>
+                                                                <td>Champagne Blend</td>
+                                                                <td>Louis Roederer</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>158</th>
+                                                                <td>Australia</td>
+                                                                <td>97</td>
+                                                                <td>97.0</td>
+                                                                <td>Victoria</td>
+                                                                <td>Muscat</td>
+                                                                <td>Campbells</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>139</th>
+                                                                <td>France</td>
+                                                                <td>97</td>
+                                                                <td>260.0</td>
+                                                                <td>Champagne</td>
+                                                                <td>Champagne Blend</td>
+                                                                <td>Bollinger</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>140</th>
+                                                                <td>US</td>
+                                                                <td>97</td>
+                                                                <td>42.0</td>
+                                                                <td>California</td>
+                                                                <td>Chardonnay</td>
+                                                                <td>Failla</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>141</th>
+                                                                <td>France</td>
+                                                                <td>97</td>
+                                                                <td>330.0</td>
+                                                                <td>Burgundy</td>
+                                                                <td>Chardonnay</td>
+                                                                <td>Louis Jadot</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>142</th>
+                                                                <td>France</td>
+                                                                <td>97</td>
+                                                                <td>208.0</td>
+                                                                <td>Champagne</td>
+                                                                <td>Champagne Blend</td>
+                                                                <td>Veuve Clicquot Ponsardin</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>143</th>
+                                                                <td>Australia</td>
+                                                                <td>97</td>
+                                                                <td>300.0</td>
+                                                                <td>Victoria</td>
+                                                                <td>Muscadel</td>
+                                                                <td>Chambers Rosewood Vineyards</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>138</th>
+                                                                <td>Australia</td>
+                                                                <td>97</td>
+                                                                <td>300.0</td>
+                                                                <td>Victoria</td>
+                                                                <td>Muscadel</td>
+                                                                <td>Chambers Rosewood Vineyards</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>145</th>
+                                                                <td>US</td>
+                                                                <td>97</td>
+                                                                <td>42.0</td>
+                                                                <td>California</td>
+                                                                <td>Chardonnay</td>
+                                                                <td>Failla</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>153</th>
+                                                                <td>US</td>
+                                                                <td>97</td>
+                                                                <td>50.0</td>
+                                                                <td>California</td>
+                                                                <td>Chardonnay</td>
+                                                                <td>Dutton-Goldfield</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>147</th>
+                                                                <td>France</td>
+                                                                <td>97</td>
+                                                                <td>100.0</td>
+                                                                <td>Bordeaux</td>
+                                                                <td>Bordeaux-style White Blend</td>
+                                                                <td>Domaine de Chevalier</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>157</th>
+                                                                <td>US</td>
+                                                                <td>97</td>
+                                                                <td>42.0</td>
+                                                                <td>California</td>
+                                                                <td>Chardonnay</td>
+                                                                <td>Failla</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>156</th>
+                                                                <td>France</td>
+                                                                <td>97</td>
+                                                                <td>269.0</td>
+                                                                <td>Alsace</td>
+                                                                <td>Pinot Gris</td>
+                                                                <td>Domaine Zind-Humbrecht</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>154</th>
+                                                                <td>France</td>
+                                                                <td>97</td>
+                                                                <td>95.0</td>
+                                                                <td>Burgundy</td>
+                                                                <td>Chardonnay</td>
+                                                                <td>William Fèvre</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>155</th>
+                                                                <td>France</td>
+                                                                <td>97</td>
+                                                                <td>410.0</td>
+                                                                <td>Burgundy</td>
+                                                                <td>Chardonnay</td>
+                                                                <td>Domaine Leflaive</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>152</th>
+                                                                <td>US</td>
+                                                                <td>97</td>
+                                                                <td>60.0</td>
+                                                                <td>California</td>
+                                                                <td>Chardonnay</td>
+                                                                <td>Rochioli</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>151</th>
+                                                                <td>France</td>
+                                                                <td>97</td>
+                                                                <td>698.0</td>
+                                                                <td>Bordeaux</td>
+                                                                <td>Bordeaux-style White Blend</td>
+                                                                <td>Château La Mission Haut-Brion</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>150</th>
+                                                                <td>France</td>
+                                                                <td>97</td>
+                                                                <td>90.0</td>
+                                                                <td>Bordeaux</td>
+                                                                <td>Bordeaux-style White Blend</td>
+                                                                <td>Château Suduiraut</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>149</th>
+                                                                <td>France</td>
+                                                                <td>97</td>
+                                                                <td>90.0</td>
+                                                                <td>Bordeaux</td>
+                                                                <td>Bordeaux-style White Blend</td>
+                                                                <td>Château Suduiraut</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>148</th>
+                                                                <td>France</td>
+                                                                <td>97</td>
+                                                                <td>90.0</td>
+                                                                <td>Bordeaux</td>
+                                                                <td>Bordeaux-style White Blend</td>
+                                                                <td>Château Suduiraut</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>193</th>
+                                                                <td>France</td>
+                                                                <td>96</td>
+                                                                <td>214.0</td>
+                                                                <td>Alsace</td>
+                                                                <td>Pinot Gris</td>
+                                                                <td>Domaine Zind-Humbrecht</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>198</th>
+                                                                <td>US</td>
+                                                                <td>96</td>
+                                                                <td>50.0</td>
+                                                                <td>California</td>
+                                                                <td>Chardonnay</td>
+                                                                <td>Gary Farrell</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>197</th>
+                                                                <td>France</td>
+                                                                <td>96</td>
+                                                                <td>80.0</td>
+                                                                <td>Alsace</td>
+                                                                <td>Pinot Gris</td>
+                                                                <td>Domaine Schoffit</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>196</th>
+                                                                <td>France</td>
+                                                                <td>96</td>
+                                                                <td>500.0</td>
+                                                                <td>Burgundy</td>
+                                                                <td>Chardonnay</td>
+                                                                <td>Bouchard Père &amp; Fils</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>195</th>
+                                                                <td>France</td>
+                                                                <td>96</td>
+                                                                <td>350.0</td>
+                                                                <td>Champagne</td>
+                                                                <td>Champagne Blend</td>
+                                                                <td>Krug</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>194</th>
+                                                                <td>France</td>
+                                                                <td>96</td>
+                                                                <td>102.0</td>
+                                                                <td>Alsace</td>
+                                                                <td>Pinot Gris</td>
+                                                                <td>Domaine Zind-Humbrecht</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>187</th>
+                                                                <td>France</td>
+                                                                <td>96</td>
+                                                                <td>110.0</td>
+                                                                <td>Burgundy</td>
+                                                                <td>Chardonnay</td>
+                                                                <td>William Fèvre</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>192</th>
+                                                                <td>France</td>
+                                                                <td>96</td>
+                                                                <td>85.0</td>
+                                                                <td>Burgundy</td>
+                                                                <td>Chardonnay</td>
+                                                                <td>William Fèvre</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>191</th>
+                                                                <td>France</td>
+                                                                <td>96</td>
+                                                                <td>175.0</td>
+                                                                <td>Burgundy</td>
+                                                                <td>Chardonnay</td>
+                                                                <td>Domaine Leflaive</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>190</th>
+                                                                <td>France</td>
+                                                                <td>96</td>
+                                                                <td>500.0</td>
+                                                                <td>Burgundy</td>
+                                                                <td>Chardonnay</td>
+                                                                <td>Etienne Sauzet</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>189</th>
+                                                                <td>France</td>
+                                                                <td>96</td>
+                                                                <td>596.0</td>
+                                                                <td>Burgundy</td>
+                                                                <td>Chardonnay</td>
+                                                                <td>Joseph Drouhin</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>188</th>
+                                                                <td>US</td>
+                                                                <td>96</td>
+                                                                <td>180.0</td>
+                                                                <td>California</td>
+                                                                <td>Chardonnay</td>
+                                                                <td>Hanzell</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>186</th>
+                                                                <td>France</td>
+                                                                <td>96</td>
+                                                                <td>350.0</td>
+                                                                <td>Burgundy</td>
+                                                                <td>Chardonnay</td>
+                                                                <td>Olivier Leflaive</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>199</th>
+                                                                <td>Italy</td>
+                                                                <td>96</td>
+                                                                <td>90.0</td>
+                                                                <td>Northeastern Italy</td>
+                                                                <td>Picolit</td>
+                                                                <td>Livio Felluga</td>
+                                                                <td>white wine</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+
+</body>
+
+</html>

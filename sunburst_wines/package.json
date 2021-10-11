@@ -1,0 +1,14 @@
+{
+  "name": "@shuaihaofzny/sunburst-map-of-nyc-crime-data-in-2018",
+  "main": "6b223a6c33888344@115.js",
+  "version": "115.0.0",
+  "homepage": "https://observablehq.com/@shuaihaofzny/sunburst-map-of-nyc-crime-data-in-2018",
+  "author": {
+    "name": "Shuai Hao",
+    "url": "https://observablehq.com/@shuaihaofzny"
+  },
+  "type": "module",
+  "peerDependencies": {
+    "@observablehq/runtime": "4"
+  }
+}

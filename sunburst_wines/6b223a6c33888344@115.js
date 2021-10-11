@@ -151,7 +151,7 @@ export default function define(runtime, observer) {
   main.variable(observer("data")).define("data", ["d3"], function(d3){return(
 // d3.json("https://gist.githubusercontent.com/haoshuai999/6d092f25f2b905db9618820c9efb6c91/raw/83a5d96aaad53e713537986bec5913bce739fa3d/crime.json")
 // d3.json("data_red.json")
-d3.json("test.json")
+d3.json("https://erickahoule.github.io/project_3_group_1_wine/test.json")
 )});
 
   main.variable(observer("partition")).define("partition", ["d3"], function(d3){return(

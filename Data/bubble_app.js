@@ -2,7 +2,7 @@ $(document).ready(function(){
 Highcharts.chart('container', {
     chart: {
         type: 'packedbubble',
-        height: '90%',
+        height: '75%',
         backgroundColor: "#e4d8da"
     },
     title: {

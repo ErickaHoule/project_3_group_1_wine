@@ -10,7 +10,7 @@ $(document).ready(function() {
 function getDataAndMakeMap() {
     let limit = $("#filter").val();
     // // Use this link to get the GeoJSON data.
-    let url = "https://erickahoule.github.io/project_3_group_1_wine/Web Visualizations/Data/top_wine_map.json";
+    let url = "Data/top_wine_map.json";
     // AJAX
     $.ajax({
         type: "GET",
